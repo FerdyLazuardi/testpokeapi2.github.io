@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Progate</title>
+    <link rel="stylesheet" href="stylesheet.css" >
+</head>
+
+<body>
+    <h1>GET Pikachu!</h1>
+
+    <button type="button" onclick="fetchData()">Fetch data</button>
+    <div id="container">
+
+    </div>
+
+    <script>
+        async function fetchData() {
+
+            const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=30", {
+                method: "GET"
+            });
+
+            const json = await response.json();
+            const results = json.results;
+
+            let data = "";
+
+            for (let i = 0; i < results.length; i++) {
+                //deklarasi variabel
+                const pokemon = results[i];
+                const pokemonRespone = await fetch(pokemon.url);
+                const pokemonJson = await pokemonRespone.json();
+                const name = pokemonJson.name;
+                const id = pokemonJson.id;
+                const sprites = pokemonJson.sprites.front_default;
+                const types = pokemonJson.types[0].type.name;
+
+                //menambahkan div baru
+                const pokemonDiv = document.createElement("div");
+                pokemonDiv.classList.add(`pokemon`);
+                pokemonDiv.classList.add(`${types}`);
+
+                //memasukkan ke html
+                pokemonDiv.innerHTML = `<p>${id} : ${name} </p>
+                <img src="${sprites}"> <p>${types}</p>`;
+                const container = document.getElementById("container");
+                container.appendChild(pokemonDiv);
+
+                //style
+               
+
+            }
+           
+
+            const divContainer = document.getElementById("container");
+            divContainer.style.display = "flex";
+            divContainer.style.boxSizing = "border-box";
+            divContainer.style.textAlign = "center";
+            divContainer.style.flexWrap = "wrap";
+
+            
+
+
+
+        }
+    </script>
+</body>
+
+</html>
