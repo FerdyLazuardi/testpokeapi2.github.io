@@ -1,0 +1,36 @@
+.pokemon{
+    width: 10%;
+    margin: 7px;
+}
+
+.grass {
+    background-color: green;
+}
+
+.fire {
+    background-color: red;
+}
+
+.water {
+    background-color: aqua;
+}
+
+.bug {
+    background-color:rgb(237, 198, 25);
+}
+
+.normal {
+    background-color: bisque;
+}
+
+.poison {
+    background-color: purple;
+}
+
+.electric {
+    background-color: yellow;
+}
+
+.ground {
+    background-color: brown;
+}
